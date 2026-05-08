@@ -1,0 +1,23 @@
+{
+  "skill_name": "gtm-campaign-engine",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have a VSI export showing that Series A fintech founders keep saying they 'think they know their ICP but haven't pressure-tested it.' 5 out of 8 calls mentioned this. I want to build a cold campaign targeting these founders — email + LinkedIn. Find leads, write the sequence, and push to Lemlist. Here's my signal data:\n\nPain points:\n- 'I think I know my ICP but I haven't really tested it' (5/8 calls)\n- 'We hired a sales rep and they can't replicate what I do' (3/8 calls)\n- 'Our pipeline is full of wrong-fit deals' (4/8 calls)\n\nTriggers: Series A raised in last 6 months, hiring first GTM role\nObjections: 'We're too early for this', 'I should figure this out myself'\nICP: B2B SaaS, fintech vertical, 10-30 employees, $2M-$10M raised",
+      "expected_output": "Should pull signals, search for leads matching ICP, score with FITS, present sample for approval, write a pain-first multi-step sequence (email + LinkedIn), and offer to push to Lemlist. Step 1 must open with the ICP pressure-testing pain, NOT the funding trigger.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Here's a CSV with 100 companies I want to target. The list only has company names — no contacts, no emails. I need you to find the right people at each company, enrich them, score them, and build a 4-step cold sequence. My ICP is VP of Sales or Head of Growth at B2B SaaS companies, Series A-B. The main pain we're hearing from calls is that founders can't transfer their selling motion to their first sales hire.\n\nCompanies: Acme Corp, TechFlow, DataBridge, SalesLoft, [... 96 more companies]",
+      "expected_output": "Should recognize the list needs enrichment (company names only), explain it will enrich companies via EnrichLayer, find contacts matching VP Sales/Head of Growth via Lemlist or Apollo, score with FITS, present sample, then write sequences. Should NOT skip the enrichment step or assume emails exist.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "We talked to 4 founders last month who ghosted after the first call. VSI says their main hesitation was timing — they all said 'not right now, maybe next quarter.' One of them just raised a Series B and another posted a VP Sales job. Write a warm re-engagement sequence for these 4 people. I have their names and emails already.",
+      "expected_output": "Should build a warm re-engagement campaign (not cold). Should lead with what's changed since last contact, not the trigger events. The funding/hiring are targeting signals, not openers. Sequence should be 3 steps, acknowledge the gap, and offer a new reason to reconnect. Should ask for the lead details and push to Lemlist.",
+      "files": []
+    }
+  ]
+}
