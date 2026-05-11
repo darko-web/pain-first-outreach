@@ -18,9 +18,9 @@ Use VSI MCP: get_signals
 ```
 
 **For campaign building, pull in this order:**
-1. `signal_type: pain_point, status: validated` — strongest hooks for Step 1
-2. `signal_type: pain_point, status: emerging` — newer patterns, good for testing
-3. `signal_type: objection` — pre-empt in Step 3+
+1. `signal_type: pain_point, status: validated`. strongest hooks for Step 1
+2. `signal_type: pain_point, status: emerging`. newer patterns, good for testing
+3. `signal_type: objection`. pre-empt in Step 3+
 
 ### get_artifacts
 Pull structured documents: ICP definitions, positioning, objection matrices.
@@ -33,12 +33,12 @@ Use VSI MCP: get_artifacts
 ```
 
 **Key artifacts for campaigns:**
-- `icp` — targeting criteria for lead search (Phase 2)
-- `objection_matrix` — objections ranked by frequency, use to pre-empt in sequences
-- `positioning` — framing language, use in Bridge section of messages
+- `icp`. targeting criteria for lead search (Phase 2)
+- `objection_matrix`. objections ranked by frequency, use to pre-empt in sequences
+- `positioning`. framing language, use in Bridge section of messages
 
 ### get_aggregated_reflections
-Behavioral patterns from calls — what helped, what hurt, what was missed.
+Behavioral patterns from calls. what helped, what hurt, what was missed.
 
 ```
 Use VSI MCP: get_aggregated_reflections
@@ -47,7 +47,7 @@ Use VSI MCP: get_aggregated_reflections
   - direction: hurt | helped | missed
 ```
 
-**For campaigns:** Pull `hurt` and `missed` reflections — these surface pain points that prospects experienced but may not articulate directly.
+**For campaigns:** Pull `hurt` and `missed` reflections. these surface pain points that prospects experienced but may not articulate directly.
 
 ### list_ventures
 Discover available ventures. Call this first if you don't know the venture_id.
@@ -74,10 +74,10 @@ Use when you need to find direct quotes or specific call context to make message
 
 Not all signals are equal. When multiple signals are available, prioritize:
 
-1. **Validated > Emerging > Candidate** — validated signals have been confirmed across multiple calls
-2. **Recent > Old** — signals from last 4 weeks outweigh older ones
-3. **Specific > General** — "Series A SaaS founders lose first 3 sales hires in 18 months" beats "founders struggle with GTM"
-4. **Frequent > Rare** — signals mentioned in 3+ calls are patterns; 1-2 mentions are anecdotes
+1. **Validated > Emerging > Candidate**: validated signals have been confirmed across multiple calls
+2. **Recent > Old**: signals from last 4 weeks outweigh older ones
+3. **Specific > General**: "Series A SaaS founders lose first 3 sales hires in 18 months" beats "founders struggle with GTM"
+4. **Frequent > Rare**: signals mentioned in 3+ calls are patterns; 1-2 mentions are anecdotes
 
 Use the strongest, most specific, most recent signal as your Step 1 opener. Use weaker signals as supporting angles in later steps.
 

@@ -1,13 +1,59 @@
 # Lead Search & Enrichment Tools
 
-## Tool priority
+## Two modes: cheap and extensive
 
-1. **Lemlist** — default for search + campaign delivery
-2. **Clay** — deep enrichment, waterfall search across multiple sources
-3. **Apollo** — high-volume prospecting, large databases
-4. **EnrichLayer** — enrichment layer for filling gaps (company data, tech stack, funding)
+This skill is designed to run with **zero paid subscriptions** in cheap mode, and scale up to a full stack in extensive mode. Default to cheap mode unless the user explicitly opts in to the full stack or already has Lemlist configured.
 
-Ask the user which tool(s) they want to use if not obvious from context. Lemlist is always the campaign delivery tool regardless of where leads come from.
+### Cheap mode (default, $0)
+
+**Tool: EnrichLayer only.** Used for both sourcing (`find_company_role`) and enrichment (`enrich_company`, `get_profile_email`, `enrich_person`). Output is a copy-paste list for manual LinkedIn outreach. No Lemlist required.
+
+**Activation cost:** EnrichLayer offers free credits on signup at `enrichlayer.com`. Typically enough for the first ~50-100 lookups, which is plenty to validate the skill on a first campaign.
+
+See "EnrichLayer-only sourcing flow" below.
+
+### Extensive mode (on user request)
+
+Tool priority when running the full stack:
+
+1. **Lemlist**: lead search + automated campaign delivery
+2. **Clay**: deep waterfall enrichment across multiple sources
+3. **Apollo**: high-volume prospecting, large databases
+4. **EnrichLayer**: gap-fill after Lemlist/Clay/Apollo search
+
+Ask the user which tool(s) they want to use if not obvious from context. Lemlist is the campaign delivery tool whenever automated sequences are involved.
+
+---
+
+## EnrichLayer-only sourcing flow (cheap mode)
+
+EnrichLayer's `find_company_role` tool can source contacts directly, not just enrich existing ones. Combined with manual LinkedIn outreach, this is the entire stack you need for a validation campaign.
+
+**Steps:**
+
+1. **Get target companies from the user.** A simple list of 10-30 company names is enough. Source can be anything (Crunchbase, LinkedIn search, conference attendee list, public top-companies-by-industry list, the user's network).
+2. **For each company, find the contact** via `find_company_role`:
+   ```bash
+   curl "https://enrichlayer.com/api/v2/find/company/role/" \
+     -H "Authorization: Bearer $ENRICHLAYER_API_KEY" \
+     -d '{"company_name": "Acme Corp", "role": "Head of Supply Chain"}'
+   ```
+   Use the ICP title from Phase 1 as the `role`.
+3. **Enrich the company** for FITS scoring fields (size, funding, industry):
+   ```bash
+   curl "https://enrichlayer.com/api/v2/company/enrich" \
+     -H "Authorization: Bearer $ENRICHLAYER_API_KEY" \
+     -d '{"domain": "acme.com"}'
+   ```
+4. **Get LinkedIn URL** from the `enrich_person` response (you already have it from step 2 typically). For LinkedIn-only mode, this is all you need; no email lookup required.
+5. **Tag the champion-hacker flag** based on visible public signals: posts about internal tools, job ads for ops engineers, podcast mentions of stack improvements, conference talks on the topic. Default to `unknown` if no signal.
+
+**Credit math:** A typical 20-company campaign costs ~40-60 EnrichLayer calls (find_role + enrich_company per lead, sometimes a follow-up enrich_person). Free signup credits comfortably cover this.
+
+**When to graduate to extensive mode:**
+- Want more than ~50 prospects per batch -> add Apollo or paid EnrichLayer tier.
+- Want automation instead of manually sending each connection request -> add Lemlist.
+- Need deeper firmographic / tech-stack data per lead -> add Clay.
 
 ---
 
@@ -34,7 +80,7 @@ Before adding leads, check they're not already in an active campaign to avoid do
 
 ## Clay
 
-Clay provides waterfall enrichment — it searches across multiple data providers to find the best match.
+Clay provides waterfall enrichment. it searches across multiple data providers to find the best match.
 
 **Integration:** Clay doesn't have an MCP yet. The user will either:
 - Share a Clay table export (CSV or JSON)
@@ -76,13 +122,13 @@ Apollo has one of the largest B2B contact databases.
 
 EnrichLayer fills gaps in lead/company data after initial search. Use the MCP tools if available, otherwise call the REST API directly.
 
-### MCP tools (preferred — if `@enrichlayer/mcp-server` is connected)
+### MCP tools (preferred. if `@enrichlayer/mcp-server` is connected)
 
 The MCP exposes 25 tools. Key ones for GTM:
-- `find_company_role` — find a person by role at a company
-- `get_profile_email` — get work email for a LinkedIn profile (async — returns 202, poll until ready)
-- `enrich_company` — company firmographics by domain
-- `enrich_person` — person data by email or LinkedIn URL
+- `find_company_role`. find a person by role at a company
+- `get_profile_email`. get work email for a LinkedIn profile (async. returns 202, poll until ready)
+- `enrich_company`. company firmographics by domain
+- `enrich_person`. person data by email or LinkedIn URL
 
 ### REST API (fallback)
 
@@ -94,7 +140,7 @@ curl "https://enrichlayer.com/api/v2/find/company/role/" \
   -d '{"company_name": "Acme Corp", "role": "CFO"}'
 ```
 
-**Get work email (async — 202 means processing):**
+**Get work email (async. 202 means processing):**
 ```bash
 curl "https://enrichlayer.com/api/v2/profile/email" \
   -H "Authorization: Bearer $ENRICH_LAYER_API_KEY" \
