@@ -1,8 +1,10 @@
 # Message Frameworks & Channel Rules
 
-## Context reminder: pre-product research
+## Context reminder: discovery and validation, not sales
 
-There is no product yet. Every message this skill produces is a research probe, not a soft pitch. No case studies. No benchmarks. No "see how we can." The CTA always asks the prospect to compare notes, share how they handle the pain today, or react to a pattern. If a draft message could be read as implying we have a solution, rewrite it.
+Every message this skill produces is a discovery or validation probe, not a soft pitch. No case studies. No benchmarks. No "see how we can." The CTA always asks the prospect to compare notes, share how they handle the pain today, or react to a pattern.
+
+This rule holds whether the user has nothing built yet, a concept on paper, a prototype, or an early MVP. Even if a product exists, the first message never leads with it, because the goal of first-touch is to validate that the pain is real and the prospect cares, not to introduce a fix. If a draft message could be read as implying we have a solution, rewrite it.
 
 ## Two target tiers, two message variants
 
@@ -64,7 +66,7 @@ Carry verbatim numbers from VSI signals when they exist. "Loses two workdays per
 - "We're trying to learn what people in your seat are actually doing about this. Mind sharing a few notes?"
 - "Would value your read on this if you have 10 mins."
 
-This flips the dynamic from "let me talk to you" to "I want to learn from you" and is especially strong in pre-product research.
+This flips the dynamic from "let me talk to you" to "I want to learn from you" and is especially strong for discovery and validation outreach.
 
 **Banned (AI shorthand, robotic):**
 - "Match yours?"
@@ -191,7 +193,7 @@ Show both with character counts. The user picks per lead or per segment. Not eve
 
 If the core (without-referral) version cannot be trimmed below ~170 chars while preserving the pain specificity, the with-referral version may not fit under 200. In that case, surface only the without-referral option and explicitly note "no room for referral on this one."
 
-**Referral remix must include a recognition payoff.** This is pre-product research. We cannot offer product value or information value in a first message; the only honest currency we have is **emotional value**, recognition that the prospect is one of the sharper / more thoughtful / more engaged people in the space. The referral phrase must answer *why* a colleague flagged them, and the answer must be a compliment about their work or thinking.
+**Referral remix must include a recognition payoff.** A first-touch discovery or validation message cannot lead with product value or information value, even when a product exists, because that would break the pain frame. The only honest currency we have at first touch is **emotional value**: recognition that the prospect is one of the sharper / more thoughtful / more engaged people in the space. The referral phrase must answer *why* a colleague flagged them, and the answer must be a compliment about their work or thinking.
 
 **Good referral framings (include recognition):**
 - "A colleague flagged you as one of the sharper [persona] thinking about [topic],"
@@ -356,5 +358,5 @@ The trigger tells you *who* and *when*. The pain is still the opener.
 - **Vague CTA**: "Let me know your thoughts" on what?
 - **Same facet repeated**: each step needs a new reason to respond. Cycle through cost / productivity / process / team facets of the same root pain.
 - **"No pitch" disclaimers**: everyone knows you have an agenda. Disclaiming it wastes space.
-- **Pitching the solution (even softly)**: breaks the discovery frame. There is no product yet. Every message validates the pain; no demos, case studies, benchmarks, "see how we can," or "see how to reduce X to Y." Late-step variation comes from new pain facets, never solution reveals.
+- **Pitching the solution (even softly)**: breaks the discovery/validation frame. Even if a product exists, the first touch never leads with it. Every message validates the pain; no demos, case studies, benchmarks, "see how we can," or "see how to reduce X to Y." Late-step variation comes from new pain facets, never solution reveals.
 - **Fabricated numbers**: never invent stats. Use only what's in VSI signals.

@@ -1,15 +1,15 @@
 ---
 name: pain-first-outreach
-description: "Use when someone wants to run pre-product research outreach, from raw signals to a live campaign. **LinkedIn-first by default** (200-char max connection requests), with email as an optional or additional channel. There is no product yet: the goal is to find champions in a vertical who are already hacking their own solution, plus people who feel the pain but have not yet acted on it. Handles the full flow: pulls ICP and pain points from VSI MCP, searches and enriches leads (Lemlist, Clay, Apollo, EnrichLayer), scores with FITS framework, writes pain-first **discovery** sequences that validate pain with prospects rather than pitch a solution, and launches directly in Lemlist. Trigger on 'build a campaign', 'create outreach', 'run a sequence', 'I have signals, let's go', 'find leads for', 'who should we target', 'launch in Lemlist', 'cold campaign', 'ABM campaign', 're-engage', 'turn calls into outreach', or any request to go from ICP/signals to a live campaign. Also trigger when a user dumps context about their market and expects a campaign to come out the other end."
+description: "Use when someone wants to run discovery or validation outreach, from raw signals to a live campaign. Works at any stage: no product, concept, prototype, or early MVP. **LinkedIn-first by default** (200-char max connection requests), with email as an optional or additional channel. The goal is to find champions in a vertical who are already hacking their own solution, plus people who feel the pain but have not yet acted on it. Handles the full flow: pulls ICP and pain points from VSI MCP, searches and enriches leads (EnrichLayer alone in cheap mode; Lemlist, Clay, Apollo when scaling), scores with FITS framework, writes pain-first sequences that validate pain with prospects rather than pitch a solution, and launches manually or directly in Lemlist. Trigger on 'build a campaign', 'create outreach', 'run a sequence', 'I have signals, let's go', 'find leads for', 'who should we target', 'launch in Lemlist', 'cold campaign', 'ABM campaign', 're-engage', 'turn calls into outreach', 'validate this concept', 'test if the pain resonates', or any request to go from ICP/signals to a live campaign. Also trigger when a user dumps context about their market and expects a campaign to come out the other end."
 ---
 
 # Pain-First Outreach
 
 One skill, one flow: market signals in, live campaign out. The gap between "we learned X from calls" and "X is in our outreach" should be minutes.
 
-## Context: this is pre-product research, not sales
+## Context: this is discovery and validation, not sales
 
-There is no product yet. Every campaign this skill produces is a research campaign. The goal is to find people who care enough about a specific pain to talk about it, not to sell anything.
+This skill produces discovery and validation campaigns. The goal is to find people who care enough about a specific pain to talk about it, not to push a product. It works whether the user has nothing built yet, a concept on paper, a prototype, or an early MVP. The messaging logic is the same across all of those stages: the first touch leads with the prospect's pain, never with a product.
 
 **Two target tiers inside every campaign:**
 
@@ -45,7 +45,7 @@ If the core message is already at 170+ chars and the referral version can't fit 
 
 ### Referral remix rules
 
-The referral phrase must include a **recognition payoff**: it explains why a colleague flagged this person. We are pre-product, so we cannot offer product value or information value in a first message. The only honest currency we have is **emotional value**: recognising the prospect as one of the sharper / more thoughtful / more genuinely engaged people in the space. That is what earns the read.
+The referral phrase must include a **recognition payoff**: it explains why a colleague flagged this person. A first message in discovery or validation mode cannot lead with product value or information value, even if a product exists, because that would break the pain frame. The only honest currency we have at first touch is **emotional value**: recognising the prospect as one of the sharper / more thoughtful / more genuinely engaged people in the space. That is what earns the read.
 
 Good referral framings (always include a recognition element):
 - "A colleague flagged you as one of the sharper [persona] thinking about [topic],"
@@ -420,7 +420,7 @@ On the **first invocation in a session**, the first user-facing output is always
 
 Then ask three questions:
 
-1. **"What's the goal?"** Book research calls, validate a new segment, find design partners, re-engage cold leads, etc. (Reminder: there is no product yet, so "demo signups" and "trial signups" are out of scope.)
+1. **"What's the goal?"** Book research calls, validate that the pain still resonates, test concept fit, find design partners, re-engage cold leads, etc. Out of scope: "book demos", "drive trial signups", "close deals". Even if a product exists, this skill is for first-touch discovery/validation, not for selling.
 2. **"Is this outreach for LinkedIn, email, or both?"** Default to LinkedIn if the user doesn't answer. LinkedIn is always written first; all connection requests are capped at 200 chars.
 3. **"Do you have signal data, or should I pull from VSI?"** If VSI MCP is connected, pull directly. Otherwise, ask them to paste or describe.
 

@@ -1,8 +1,8 @@
 # Pain-First Outreach
 
-A Claude Code skill for **pre-product research outreach**: turn pain signals into a live LinkedIn-first campaign that finds the right people to talk to, with no pitching.
+A Claude Code skill for **discovery and validation outreach**: turn pain signals into a live LinkedIn-first campaign that finds the right people to talk to, with no pitching.
 
-**There is no product yet.** This skill runs research campaigns, not sales campaigns. Every message validates a pain pattern and asks the prospect to compare notes. The CTA is never "see how to reduce X by Y", because there is no solution to point to.
+Built for any stage: you can be exploring a space with no product yet, validating a concept, or testing whether the pain still resonates around an early MVP. The first message is always pain-led. Every message validates a pain pattern and asks the prospect to compare notes. The CTA is never "see how to reduce X by Y" or "want to see a demo", because even if a solution exists, leading with it breaks the pain frame and kills the reply rate.
 
 **Default channel: LinkedIn.** Every session, the skill asks: *LinkedIn, email, or both?* It defaults to LinkedIn-only if unsure. LinkedIn connection requests are always drafted first and are hard-capped at **200 characters**, regardless of LinkedIn plan tier. Every first message addresses the prospect by name.
 
@@ -74,7 +74,7 @@ Trigger phrases: `"build a campaign"`, `"create outreach"`, `"find leads for"`, 
 
 ## Key concepts
 
-**Pre-product research.** No product, no benchmark, no case study. Every campaign is a research probe to validate pain and find champions.
+**Discovery and validation, not sales.** Every campaign is a first-touch probe to confirm the pain is real and find champions. No demo, no benchmark, no case study in any message, even if a product exists. The first touch leads with the prospect's pain, full stop.
 
 **Pain-first messaging.** Trigger events (funding, hiring) tell you *who* to contact and *when*. They are never the message hook. Always lead with a pain pattern from VSI signals. Always address the prospect by name.
 
