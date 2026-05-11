@@ -66,11 +66,64 @@ Users can enter at any phase: "I already have leads, just write the messages" go
 | Clay | Export / webhook | Deep waterfall enrichment | User provides Clay table or webhook |
 | Apollo | Export or API | High-volume prospecting | User provides Apollo export or API access |
 
-## Install
+## How to install
 
-Drop the `pain-first-outreach-skill/` folder into your Claude Code skills directory. The skill self-registers via its `SKILL.md` frontmatter.
+Skills run locally. Pasting this repo's URL into a Claude chat will **not** install it; you need to put the skill files where Claude can read them. Two surfaces, two methods.
 
-Trigger phrases: `"build a campaign"`, `"create outreach"`, `"find leads for"`, `"launch in Lemlist"`, `"cold sequence"`, `"ABM campaign"`.
+### Option 1: Claude Code (CLI, VSCode extension, or desktop)
+
+Skills live in `~/.claude/skills/<skill-name>/` and auto-register from their `SKILL.md` frontmatter.
+
+```bash
+# Clone the repo to a permanent location
+git clone https://github.com/darko-web/pain-first-outreach.git ~/code/pain-first-outreach
+
+# Symlink the skill folder into your Claude Code skills directory
+mkdir -p ~/.claude/skills
+ln -s ~/code/pain-first-outreach/pain-first-outreach-skill ~/.claude/skills/pain-first-outreach
+```
+
+Restart Claude Code. Verify the skill loaded by asking *"What skills do I have available?"*; `pain-first-outreach` should appear.
+
+The symlink approach means future updates are a `git pull` away.
+
+**Alternative (no symlink):** `cp -r pain-first-outreach-skill ~/.claude/skills/pain-first-outreach`. Simpler but you'll need to re-copy after each repo update.
+
+### Option 2: Claude.ai chat (web or desktop)
+
+Claude.ai supports **Custom Skills** uploaded as zip files via Settings -> Capabilities -> Skills (exact location may vary by plan / release).
+
+```bash
+git clone https://github.com/darko-web/pain-first-outreach.git
+cd pain-first-outreach
+zip -r pain-first-outreach.zip pain-first-outreach-skill
+```
+
+Upload `pain-first-outreach.zip` in Claude.ai's skill UI and enable it. The skill then activates on the same trigger phrases in any chat.
+
+### Triggering the skill
+
+Once installed, the skill activates automatically on phrases like:
+
+`"build a campaign"`, `"create outreach"`, `"find leads for"`, `"launch in Lemlist"`, `"cold sequence"`, `"ABM campaign"`, `"validate this concept"`, `"test if the pain resonates"`, `"turn calls into outreach"`.
+
+You can also invoke it directly with `/pain-first-outreach` (Claude Code) or by mentioning the skill name in chat.
+
+### First-run setup
+
+Before your first campaign, set the one required environment variable (cheap mode):
+
+```bash
+# In ~/.zshrc or ~/.bashrc
+export ENRICHLAYER_API_KEY="your_key_here"  # free credits on signup at enrichlayer.com
+```
+
+Optional, for extensive mode:
+```bash
+export LEMLIST_API_KEY="your_key_here"      # only if you want automated sequences
+```
+
+VSI MCP, if you use it, is configured separately per venture.
 
 ## Key concepts
 
