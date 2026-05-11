@@ -1,11 +1,27 @@
 ---
 name: pain-first-outreach
-description: "Use when someone wants to run outreach — from raw signals to a live campaign. Handles the full flow: pulls ICP and pain points from VSI MCP, searches and enriches leads (Lemlist, Clay, Apollo, EnrichLayer), scores with FITS framework, writes pain-first **discovery** multi-channel sequences (email + LinkedIn + WhatsApp) that validate pain with prospects rather than pitch a solution, and launches directly in Lemlist. Trigger on 'build a campaign', 'create outreach', 'run a sequence', 'I have signals, let's go', 'find leads for', 'who should we target', 'launch in Lemlist', 'cold campaign', 'ABM campaign', 're-engage', 'turn calls into outreach', or any request to go from ICP/signals to a live campaign. Also trigger when a user dumps context about their market and expects a campaign to come out the other end."
+description: "Use when someone wants to run outreach — from raw signals to a live campaign. **LinkedIn-first by default** (200-char max connection requests), with email as an optional or additional channel. Handles the full flow: pulls ICP and pain points from VSI MCP, searches and enriches leads (Lemlist, Clay, Apollo, EnrichLayer), scores with FITS framework, writes pain-first **discovery** sequences that validate pain with prospects rather than pitch a solution, and launches directly in Lemlist. Trigger on 'build a campaign', 'create outreach', 'run a sequence', 'I have signals, let's go', 'find leads for', 'who should we target', 'launch in Lemlist', 'cold campaign', 'ABM campaign', 're-engage', 'turn calls into outreach', or any request to go from ICP/signals to a live campaign. Also trigger when a user dumps context about their market and expects a campaign to come out the other end."
 ---
 
 # Pain-First Outreach
 
 One skill, one flow: market signals in, live campaign out. The gap between "we learned X from calls" and "X is in our outreach" should be minutes.
+
+## Channel default: LinkedIn-first
+
+**Always write LinkedIn outreach first.** LinkedIn connection requests are the primary, default deliverable of this skill — capped at **200 characters max, no exceptions**. Email is a supplementary channel.
+
+At session start (see "Session start" below), ask the user explicitly:
+
+> "Is this outreach for **LinkedIn**, **email**, or **both**?"
+
+- **LinkedIn (default)** → write LinkedIn-only sequence. Connection request as Step 1, DM as Step 2, etc. All connection requests ≤ 200 chars.
+- **Email** → write email-only sequence. LinkedIn is omitted.
+- **Both** → LinkedIn is still drafted **first** (it's the easiest discovery surface). Email is layered in as a parallel/follow-up channel.
+
+If the user does not answer, default to LinkedIn-only.
+
+The 200-character cap on LinkedIn connection requests is a hard rule. Count characters before finalizing every connection request. If you go over, trim the least specific phrase first. Never ship a connection request at 201+ chars.
 
 ## How it works
 
@@ -138,35 +154,70 @@ For each tier, write the full sequence using **Signal -> Bridge -> CTA**.
 - **Bridge**: Connect to their situation without assuming. ("Given [context], I'd guess...")
 - **CTA**: One low-friction ask. ("Worth 15 mins to compare notes?")
 
-**Sequence structure by tier:**
+**Sequence structure by tier and channel choice:**
+
+Sequence structure depends on the channel chosen at session start. **LinkedIn is always written first** within any given sequence.
+
+**LinkedIn-only (default channel choice):**
+
+Tier A (4 steps, LinkedIn):
+```
+Day 1  — LinkedIn: connection request (≤200 chars, pain-first)
+Day 3  — LinkedIn DM (after accept): conversation opener, sharper pain framing
+Day 8  — LinkedIn DM: new angle on the same pain
+Day 14 — LinkedIn DM: clean breakup, one last validation question
+```
+
+Tier B (3 steps, LinkedIn):
+```
+Day 1  — LinkedIn: connection request (≤200 chars)
+Day 4  — LinkedIn DM (after accept): conversation opener
+Day 10 — LinkedIn DM: one follow-up, then done
+```
+
+Tier C (2 steps, LinkedIn):
+```
+Day 1  — LinkedIn: connection request (≤200 chars)
+Day 7  — LinkedIn DM: one follow-up, then done
+```
+
+**Email-only (if user picks email):**
+
+Tier A (4 steps): Day 1 cold opener → Day 4 new angle → Day 9 sharper pain framing → Day 14 breakup.
+Tier B (3 steps): Day 1 cold opener → Day 5 new angle → Day 11 breakup.
+Tier C (2 steps): Day 1 cold opener → Day 6 one follow-up.
+
+**Both (LinkedIn + email):**
+
+LinkedIn is drafted **first** as the lead channel. Email runs in parallel as a second touch.
 
 Tier A (6 steps):
 ```
-Day 1  — Email: pain-first opener
-Day 3  — LinkedIn: connection request (200 chars default)
-Day 5  — Email: new angle, case study or insight
-Day 8  — LinkedIn DM: after accept, conversation opener
-Day 12 — WhatsApp: brief personal check-in
-Day 16 — Email: clean breakup
+Day 1  — LinkedIn: connection request (≤200 chars, pain-first)  ← lead channel
+Day 2  — Email: pain-first opener
+Day 5  — LinkedIn DM (after accept): conversation opener
+Day 8  — Email: new angle
+Day 12 — LinkedIn DM: sharper pain framing
+Day 16 — Email: breakup
 ```
 
 Tier B (4 steps):
 ```
-Day 1  — Email: pain-first opener
-Day 3  — LinkedIn: connection request
-Day 6  — Email: value add angle
-Day 10 — Email: breakup
+Day 1  — LinkedIn: connection request (≤200 chars)  ← lead channel
+Day 3  — Email: pain-first opener
+Day 7  — LinkedIn DM (after accept)
+Day 11 — Email: breakup
 ```
 
 Tier C (2 steps):
 ```
-Day 1  — Email: signal-driven opener
-Day 5  — Email: one follow-up, then done
+Day 1  — LinkedIn: connection request (≤200 chars)  ← lead channel
+Day 6  — Email: one follow-up
 ```
 
 Read `references/message-frameworks.md` for channel-specific rules, character limits, and worked examples.
 
-**LinkedIn plan check:** Ask once per session: "What's your LinkedIn plan?" Connection request limit is 200 chars for most paid plans, 300 for others. Default to 200.
+**LinkedIn 200-char cap:** Connection requests are **hard-capped at 200 characters**, regardless of LinkedIn plan tier. This is enforced as the skill's universal default — even on plans that allow 300, stay at 200. Count characters before shipping every request. Trim the least specific phrase if over.
 
 ---
 
@@ -215,12 +266,13 @@ npx @lemlist/mcp-server --api-key $LEMLIST_API_KEY
 
 ## Session start
 
-When invoked, ask two things:
+When invoked, ask three things:
 
 1. **"What's the goal?"** — book calls, generate demo signups, re-engage cold leads, validate a new segment, etc.
-2. **"Do you have signal data, or should I pull from VSI?"** — if VSI MCP is connected, pull directly. Otherwise, ask them to paste or describe.
+2. **"Is this outreach for LinkedIn, email, or both?"** — default to **LinkedIn** if the user doesn't answer or is unsure. LinkedIn is always written first; all connection requests are capped at 200 chars.
+3. **"Do you have signal data, or should I pull from VSI?"** — if VSI MCP is connected, pull directly. Otherwise, ask them to paste or describe.
 
-Then run Phases 1-7.
+Then run Phases 1-7, structuring Phase 5 sequences according to the channel choice from question 2.
 
 **Entry points:** Users can enter at any phase:
 - "I already have leads, just write the messages" → skip to Phase 5

@@ -1,6 +1,8 @@
 # Pain-First Outreach
 
-A Claude Code skill for B2B outreach that turns pain signals into a live multi-channel campaign — without pitching.
+A Claude Code skill for B2B outreach that turns pain signals into a live campaign — **LinkedIn-first**, no pitching.
+
+**Default channel: LinkedIn.** Every session, the skill asks: *LinkedIn, email, or both?* It defaults to LinkedIn-only if unsure. LinkedIn connection requests are always drafted first and are hard-capped at **200 characters**, regardless of LinkedIn plan tier.
 
 **Two things it does well:**
 
@@ -48,7 +50,9 @@ Trigger phrases: `"build a campaign"`, `"create outreach"`, `"find leads for"`, 
 
 **Signal → Bridge → CTA.** Every outreach message follows this structure. Signal = specific pain observation. Bridge = connect to their situation without assuming. CTA = one low-friction discovery ask.
 
-**FITS scoring.** Fit (30%) + Intent (45%) + Timing + Stakeholder → Tier A (6-step, 3 channels), Tier B (4-step, 2 channels), Tier C (2-step email test).
+**LinkedIn-first, 200 chars max.** LinkedIn is the default and primary channel. Connection requests are hard-capped at 200 characters regardless of LinkedIn plan — the skill counts characters before shipping each request and trims the least specific phrase if over.
+
+**FITS scoring.** Fit (30%) + Intent (45%) + Timing + Stakeholder → Tier A (4-step LinkedIn / 6-step both), Tier B (3-step LinkedIn / 4-step both), Tier C (2-step test).
 
 ## Repo layout
 

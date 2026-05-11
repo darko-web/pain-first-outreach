@@ -1,5 +1,11 @@
 # Message Frameworks & Channel Rules
 
+## Channel order: LinkedIn first
+
+LinkedIn is the **default and primary** channel. Always draft the LinkedIn connection request first, even when the user has also asked for email. Connection requests are hard-capped at **200 characters** regardless of LinkedIn plan tier.
+
+If the user picked email-only at session start, skip LinkedIn entirely. If they picked LinkedIn or both, LinkedIn leads the sequence.
+
 ## Signal -> Bridge -> CTA
 
 Every message follows this structure regardless of channel.
@@ -73,13 +79,21 @@ Sources for the Signal opener:
 
 **Connection request character limits:**
 
-| Plan | Limit |
+**Hard rule: 200 characters max, always.** This skill enforces a universal 200-char cap on every LinkedIn connection request — regardless of the user's LinkedIn plan tier. 200 chars is the safe limit across paid LinkedIn plans and produces tighter, sharper copy on free plans too.
+
+Process:
+1. Draft the connection request.
+2. Count characters (including spaces and punctuation).
+3. If over 200, trim the least specific phrase first ("at your stage", "right now", "I'd guess") until ≤200.
+4. Never ship a request at 201+ chars.
+
+Reference (informational only — do not raise the cap):
+
+| Plan | Platform limit |
 |------|-------|
 | LinkedIn Free | 300 characters |
 | Premium / Sales Nav (most tiers) | 200 characters |
 | Sales Nav Advanced | 300 characters |
-
-Ask the user's plan once per session. Default to **200 chars** if unknown. Count characters before finalizing — trim the least specific part first.
 
 **Connection request rules:**
 - Make it about *their* situation, not about you
@@ -132,13 +146,18 @@ High-trust, high-attention channel. Tier A only, Step 5+.
 
 ## Campaign type archetypes
 
-### Cold
-- Step 1: Signal opener -> bridge -> curiosity CTA
-- Step 2: LinkedIn connection (reference signal, don't repeat email)
-- Step 3: Sharper version of the pain, or a question about how they're handling it today
-- Step 4: LinkedIn DM -> new angle on the same pain
-- Step 5: WhatsApp (Tier A only)
-- Step 6: Breakup email — one last validation question, no guilt
+### Cold (LinkedIn-first default)
+- Step 1: **LinkedIn connection request** (≤200 chars) — Signal -> Bridge -> curiosity CTA
+- Step 2: LinkedIn DM after accept — sharper pain framing, ask how they handle it today
+- Step 3: LinkedIn DM — new angle on the same pain
+- Step 4 (optional, "both" channel mode): Email — pain-first opener that doesn't repeat the LinkedIn DM
+- Step 5: LinkedIn DM or email breakup — one last validation question, no guilt
+
+### Cold (email-only, if user opts out of LinkedIn)
+- Step 1: Email — Signal opener -> bridge -> curiosity CTA
+- Step 2: Email — sharper version of the pain or question about how they handle it today
+- Step 3: Email — new angle on the same pain
+- Step 4: Breakup email — one last validation question, no guilt
 
 ### Warm re-engagement
 - Step 1: Acknowledge prior contact, lead with what's changed
